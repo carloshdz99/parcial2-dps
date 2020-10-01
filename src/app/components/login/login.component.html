@@ -1,4 +1,4 @@
-<section >
+<section>
     
     <div class="row">
         <!--FORMULARIO-->
@@ -6,7 +6,7 @@
 
             <div class="px-lg-5 py-lg-4 p-4 w-100 align-self-center mt-auto mb-auto">
                 <h1>Bienvenido</h1>
-                <form class="mb-5">
+                <div class="mb-5">
                     <div class="mb-4">
                       <label for="email" class="form-laber font-weight-bold">Correo</label>
                       <input type="text" class="form-control" placeholder="ejemplo@ejemplo.com" #correouser>
@@ -20,7 +20,7 @@
                     <button class="btn btn-primary  mb-2 btn-block"  (click)="authservice.sesion(correouser.value, contrauser.value)">Iniciar Sesion</button>
                     <p class=" text-center text-muted">Iniciar sesion con</p>                    
                     <button class="btn btn-primary  mb-4 btn-block" (click)="authservice.sesionGoogle()"><i class="fab fa-google"></i>oogle</button>
-                </form>
+                </div>
                   
                 <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100 mt-auto">
                     <p class="d-inline-block mb-0">Si no tienes una cuenta <a routerLink="/registry" class="font-weight-bold text-decoration-none" href="#"> registrate</a></p> 
@@ -29,12 +29,9 @@
         </div>
          
         <div class="col-lg-7 d-none d-lg-block">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active img-1 min-vh-100">
-                  </div>
-                </div>
-            </div>
+            
+                  <div class="img-1 min-vh-100">
+                  </div>            
         </div>
     </div>
-</section>
+<section>

@@ -1,36 +1,37 @@
-<!-- div principal de la pantalla -->
-<div class="container">
-    <!-- div izquierdo de la pantalla-->
-    <div class="izquierda">
-        <div class="py-5">
-            <p class="titulo">Registrarse</p>
+<section>
+    
+    <div class="row">
+        <!--FORMULARIO-->
+        <div class="col-lg-5 d-flex flex-column align-items-end min-vh-100">                
+
+            <div class="px-lg-5 py-lg-4 p-4 w-100 align-self-center mt-auto mb-auto">
+                <h1>Registrate</h1>
+                <div class="mb-5">
+                    <div class="mb-4">
+                      <label for="email" class="form-laber font-weight-bold">Correo</label>
+                      <input type="text" class="form-control" placeholder="ejemplo@ejemplo.com" #correouser>
+                      
+                    </div>
+                    <div class="mb-4">
+                      <label for="contraseña" class="form-laber font-weight-bold">Contraseña</label>
+                      <input type="text" class="form-control" placeholder="contraseña" #contrauser>
+                    </div>                    
+                    
+                    <button class="btn btn-primary  mb-2 btn-block" (click)="authservice.registro(correouser.value, contrauser.value)"  >Registrar</button>
+                    <p class=" text-center text-muted">Registrate con</p>                    
+                    <button class="btn btn-primary  mb-4 btn-block" (click)="authservice.sesionGoogle()"><i class="fab fa-google"></i>oogle</button>
+                </div>
+                  
+                <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100 mt-auto">
+                    <p class="d-inline-block mb-0">Ya tienes una cuenta? <a routerLink="/login" class="font-weight-bold text-decoration-none" href="#"> Logeate</a></p> 
+                </div>
+            </div>                         
         </div>
-
-        <!-- formulario de login -->
-        
-            <div class="form-group px-5 col-sm-6 text-center py-5">
-                <label>correo</label>
-                <input type="text" class="form-control" #correouser>
-            </div>
-            <div class="form-group px-5 col-sm-6 text-center">
-                <label>contraseña</label>
-                <input type="text" class="form-control py-3" #contrauser>
-            </div>
-            <div class="col-sm-4 px-0" id="buttom-group1">
-                <button id="boton"
-                    (click)="authservice.registro(correouser.value, contrauser.value)">Registrarse</button><br>
-                <a routerLink="/login" class="px-0 text-decoration-none">Regresar al login...</a>
-            </div>
-            <div class="col-sm-4 py-3" id="buttom-group2">
-                <button id="boton" (click)="authservice.sesionGoogle()">Registrarse con Google </button>
-            </div>
-        
-
-        <!-- fin del formulario -->
+         
+        <div class="col-lg-7 d-none d-lg-block">
+            
+                  <div class="img-1 min-vh-100">
+                  </div>            
+        </div>
     </div>
-    <!-- div derecho de la pantalla -->
-    <div class="derecha">
-        <img [src]="'assets/img/puerta.jpg'" class="imagen">
-    </div>
-</div>
-<!-- fin del div principal -->
+<section>
