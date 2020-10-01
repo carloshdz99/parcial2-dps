@@ -11,12 +11,18 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { environment } from 'src/environments/environment';
 
+//importando componente para autenticacion
+import { RegistryComponent } from './components/registry/registry.component';
+import { AuthService } from './service/auth.service';
+import { AuthGuard } from './guard/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RegistryComponent
   ],
   imports: [
     BrowserModule,
@@ -28,12 +34,14 @@ import { environment } from 'src/environments/environment';
         ]
       },
       {path:'login', component:LoginComponent},
-      {path:'**', component:NotFoundComponent}
+      {path:'registry' , component:RegistryComponent},
+      {path:"navbar", component: NavbarComponent, canActivate: [AuthGuard]},  
+      {path:'**', component:NotFoundComponent},
     ]),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
