@@ -10,12 +10,26 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 })
 export class AuthService {
 
+  userData: any;
+
   constructor(
     public authuser: AngularFireAuth,
     public route: Router,
     public ngzone: NgZone,
     public afs: AngularFirestore
-  ) { }
+  ) { 
+    this.authuser.authState.subscribe(user => {
+      if(user){
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user'));
+      }else{
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
+      }
+    })
+  }
+
 
   //metodo de autenticacion
   registro(correo: string, constraseña: string) {
@@ -44,15 +58,7 @@ export class AuthService {
   cerrarsesion() {
     localStorage.setItem('user', null);
     localStorage.removeItem('user');
-    this.authuser.signOut()
-      .then(() => {
-        this.ngzone.run(() => {
-          this.route.navigate(['login']);
-        });
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+    this.route.navigate(['login']);
   }
 
   //sesion con google
@@ -75,6 +81,14 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : true;
+    return (user !== null) ? true : false;
+  }
+
+  //verificando correo
+  correoVerificacion(){
+    return this.authuser.currentUser.then(u => u.sendEmailVerification())
+    .then(() => {
+
+    })
   }
 }
