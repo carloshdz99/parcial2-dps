@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "parcial2DPS"
+    }
+  },
+  "defaultProject": "parcial2DPS",
+  "cli": {
+    "analytics": false
+  }
 }
