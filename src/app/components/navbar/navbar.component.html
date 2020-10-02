@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-blue">
     <a class="navbar-brand" href="#"><i class="fas fa-store"></i> DiegoStore</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -6,22 +6,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#" >Inicio </a>
+          <a class="nav-link" routerLink="/productos" >Inicio </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" >Productos </a>
+            <a class="nav-link active" routerLink="/productos" >Productos </a>
         </li>
       </ul>
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item" >
-            <a class="nav-link" routerLink="/login" >Entrar</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" >Cerrar Sesion</a>
+      <ul class="navbar-nav mx-auto"  *ngIf="user$ | async as user;">
+        <li class="nav-item" *ngIf="user">
+            <a class="nav-link active">usuario: {{ user?.email}}</a>
         </li> 
         <li class="nav-item">
-            <a href="#" class="nav-link">Resgistrarse</a>
-        </li>
+            <a class="nav-link active" (click)="authSvc.cerrarsesion()">Cerrar Sesion</a>
+        </li>         
       </ul>
     </div>
   </nav>
+  

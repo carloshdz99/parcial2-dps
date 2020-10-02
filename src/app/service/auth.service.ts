@@ -3,13 +3,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { User } from 'firebase';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  public user:User;
   constructor(
     public authuser: AngularFireAuth,
     public route: Router,
