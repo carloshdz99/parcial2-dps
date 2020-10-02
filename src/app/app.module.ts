@@ -16,6 +16,11 @@ import { RegistryComponent } from './components/registry/registry.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 
+//importando alertas toastr
+import { ToastrModule } from 'ngx-toastr'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,17 +34,18 @@ import { AuthGuard } from './guard/auth.guard';
     AppRoutingModule,
     RouterModule.forRoot([
       {
-        path:'', component:NavbarComponent, children:[
+        path:'', component:NavbarComponent, canActivate: [AuthGuard], children:[
           // componentes de compras, clientes, etc
         ]
       },
       {path:'login', component:LoginComponent},
       {path:'registry' , component:RegistryComponent},
-      {path:"navbar", component: NavbarComponent, canActivate: [AuthGuard]},  
       {path:'**', component:NotFoundComponent},
     ]),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

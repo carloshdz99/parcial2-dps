@@ -8,11 +8,16 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  usuario: any;
+  correo: string;
+
   constructor(
     public authservice: AuthService
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
   }
 
+  
 }
