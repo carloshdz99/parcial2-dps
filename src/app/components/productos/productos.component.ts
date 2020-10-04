@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 
 @Component({
@@ -8,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosComponent implements OnInit {
 
-  constructor() { }
+  productos;
+  constructor(
+    private service:FirebaseService
+  ) { 
+    this.productos = this.service.productos;
+  }
 
   ngOnInit(): void {
   }

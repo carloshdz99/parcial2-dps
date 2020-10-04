@@ -4,54 +4,69 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { environment } from 'src/environments/environment';
-
+import { ProductosComponent } from './components/productos/productos.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { FirebaseService } from './services/firebase.service';
+import { PdfDetalleComponent } from './components/detalle/childs/pdf-detalle/pdf-detalle.component';
 //importando componente para autenticacion
 import { RegistryComponent } from './components/registry/registry.component';
-import { AuthService } from './service/auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guard/auth.guard';
-import { ProductosComponent } from './components/productos/productos.component';
 
-//importando alertas toastr
-import { ToastrModule } from 'ngx-toastr'
+const routes: any = [
+  {
+    path: '', component: NavbarComponent, canActivate: [AuthGuard], children: [
+      // componentes hijos
+      { path: 'productos', component: ProductosComponent },
+      { path: 'tickets', component: TicketsComponent },
+      { path: 'detalle', component: DetalleComponent },
+    ]
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'registry', component: RegistryComponent },
+  { path: '**', component: NotFoundComponent }
+];
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    ProductosComponent,
+    TicketsComponent,
+    DetalleComponent,
     LoginComponent,
     NotFoundComponent,
-    RegistryComponent
+    RegistryComponent,
+    PdfDetalleComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    RouterModule.forRoot([
-      {
-        path:'', component:NavbarComponent, canActivate: [AuthGuard], children:[
-          // componentes de compras, clientes, etc
-        ]
-      },
-      {path:'login', component:LoginComponent},
-      {path:'registry' , component:RegistryComponent},
-      {path:'productos', component:ProductosComponent},
-      {path:"navbar", component: NavbarComponent, canActivate: [AuthGuard]},  
-      {path:'**', component:NotFoundComponent},
-      
-    ]),
+    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    FirebaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

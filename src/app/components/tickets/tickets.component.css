@@ -1,0 +1,17 @@
+#trash{
+    cursor: pointer;
+}
+thead th{
+    position: sticky;
+    top: 0;
+}
+th{
+    background: white;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid tomato;
+}
+input.ng-valid{
+    border: 1px solid turquoise;
+}

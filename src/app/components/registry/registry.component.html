@@ -1,5 +1,5 @@
 <br>
-<div class="container bg-light rounded-lg h-100">
+<div class="container bg-primary rounded-lg h-100">
     <div class="row justify-content-center align-items-center">
         <!-- div izquierdo -->
         <div class="col-6 align-items-center">
@@ -8,17 +8,33 @@
                     <div class="card-header">Registrarse</div>
                     <div class="card-body">
                         <div class="align-items-center">
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="text" class="form-control" #correouser >
-                            </div>
-                            <div class="form-group">
-                                <label>contraseña</label>
-                                <input type="password" class="form-control" #contrauser >
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary" (click)="authservice.registro(correouser.value, contrauser.value)">Registrarse</button>
-                            </div>
+                            <form [formGroup]="registryForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label>Correo</label>
+                                    <input type="text" class="form-control" formControlName="correo">
+                                    <div *ngIf="form.correo.invalid && (form.correo.dirty || form.correo.touched)">
+                                        <small *ngIf="form.correo.errors.required" class="text-danger">el campo correo
+                                            es
+                                            requerido</small>
+                                        <small *ngIf="form.correo.errors.pattern" class="text-danger">el correo no tiene un
+                                            formato
+                                            valido</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>contraseña</label>
+                                    <input type="password" class="form-control" formControlName="contra">
+                                    <div
+                                        *ngIf="form.contra.invalid && (form.contra.dirty || form.contra.touched)">
+                                        <small *ngIf="form.contra.errors.required" class="text-danger">el campo nombre
+                                            es
+                                            requerido</small>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit">Ingresar</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="form-group text-center">
                             <button class="btn btn-primary" (click)="authservice.sesionGoogle()">Registrarse con Google <i class="fab fa-google"></i></button>    

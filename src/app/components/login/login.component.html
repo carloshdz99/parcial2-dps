@@ -8,20 +8,37 @@
                     <div class="card-header">Login</div>
                     <div class="card-body">
                         <div class="align-items-center">
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="text" class="form-control" #correouser >
-                            </div>
-                            <div class="form-group">
-                                <label>contraseña</label>
-                                <input type="password" class="form-control" #contrauser >
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary" (click)="authservice.sesion(correouser.value, contrauser.value)">Ingresar</button>
-                            </div>
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label>Correo</label>
+                                    <input type="text" class="form-control" formControlName="correo">
+                                    <div *ngIf="form.correo.invalid && (form.correo.dirty || form.correo.touched)">
+                                        <small *ngIf="form.correo.errors.required" class="text-danger">el campo correo
+                                            es
+                                            requerido</small>
+                                        <small *ngIf="form.correo.errors.pattern" class="text-danger">el correo no tiene un
+                                            formato
+                                            valido</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>contraseña</label>
+                                    <input type="password" class="form-control" formControlName="contra">
+                                    <div
+                                        *ngIf="form.contra.invalid && (form.contra.dirty || form.contra.touched)">
+                                        <small *ngIf="form.contra.errors.required" class="text-danger">el campo nombre
+                                            es
+                                            requerido</small>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit">Ingresar</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="form-group text-center">
-                            <button class="btn btn-primary" (click)="authservice.sesionGoogle()">Ingresar con Google <i class="fab fa-google"></i></button>    
+                            <button class="btn btn-primary" (click)="authservice.sesionGoogle()">Ingresar con Google <i
+                                    class="fab fa-google"></i></button>
                         </div>
                     </div>
                     <div class="card-footer bg-transparent text-center border-primary">
@@ -33,7 +50,8 @@
         <!-- fin div izquierdo -->
         <div class="col-6" style="height: 110%;">
             <div class="text-center">
-                <img [src]="'assets/img/carrito.jpg'" class="rounded-lg" style="height: 90%; width: 60%;" alt="Responsive image">
+                <img [src]="'assets/img/carrito.jpg'" class="rounded-lg" style="height: 90%; width: 60%;"
+                    alt="Responsive image">
             </div>
         </div>
     </div>
