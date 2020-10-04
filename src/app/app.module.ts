@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { RegistryComponent } from './components/registry/registry.component';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './guard/auth.guard';
+import { ProductosComponent } from './components/productos/productos.component';
 
 //importando alertas toastr
 import { ToastrModule } from 'ngx-toastr'
@@ -40,7 +41,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       },
       {path:'login', component:LoginComponent},
       {path:'registry' , component:RegistryComponent},
+      {path:'productos', component:ProductosComponent},
+      {path:"navbar", component: NavbarComponent, canActivate: [AuthGuard]},  
       {path:'**', component:NotFoundComponent},
+      
     ]),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,

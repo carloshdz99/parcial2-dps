@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
+import { AuthService } from '../../service/auth.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers: [ AuthService ]
 })
 export class NavbarComponent implements OnInit {
+  public user$: Observable<any> = this.authSvc.authuser.user;
+  constructor( public authSvc: AuthService ) { }
 
-  usuario: any;
-  correo: string;
+  
 
-  constructor(
-    public authservice: AuthService
-  ) {
-   }
 
   ngOnInit(): void {
   }
