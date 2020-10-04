@@ -1,0 +1,23 @@
+<h3>productos</h3>
+<table class="table table-striped table-bordered text-center">
+    <thead>
+        <tr>
+            <th>codigo</th>
+            <th>nombre</th>
+            <th>precio</th>
+            <th>descripcion</th>
+            <th>imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of productos;">
+            <td>{{producto.codigo}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio | currency:'USD'}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>
+                <img [src]="producto.imagen" height="70px" width="100px">
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+ 
+<h3 style="margin-bottom: -90px;" class="mt-5">detalle ticket</h3>
+<div class="form-group form-inline float-right mt-5">
+    <label for="busqueda" class="mr-3">Buscar</label>
+    <input type="text" class="form-control" (keyup)="busqueda($event)" style="width: 200px;">
+</div>
+<table class="table table-striped table-bordered text-center">
+    <thead>
+        <tr>
+            <th>nombre</th>
+            <th>dui</th>
+            <th>pago</th>
+            <th>descuento</th>
+            <th>acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ticket of tickets | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>{{ticket.nombre}}</td>
+            <td>{{ticket.dui}}</td>
+            <td>{{ticket.pago | currency:'USD'}}</td>
+            <td>{{ticket.descuento}}</td>
+            <td app-pdf-detalle [invoice]="ticket"></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" class="float-right "></pagination-controls>

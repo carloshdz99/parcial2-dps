@@ -1,0 +1,35 @@
+<p class="text-primary d-inline mr-3" (click)="renderPDF()"><i class="fa fa-pencil"></i>ver ticket</p>
+
+
+<div class="d-none">
+    <div id="html2Canvas">
+        <div class="container mt-5">
+            <h3 class="text-center">Diego Store</h3>
+            <h4 class="text-center">Ticket de compra</h4>
+            <hr>
+            <h6 class="mt-5">nombre cliente: {{invoice.nombre}}</h6>
+            <h6>dui cliente: {{invoice.dui}}</h6>
+            <h6>descuento aplicado: {{invoice.descuento}}</h6>
+    
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>codigo</th>
+                        <th>nombre</th>
+                        <th>precio</th>
+                        <th>cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let detalle of invoice.detalle;">
+                        <td>{{detalle.codigo}}</td>
+                        <td>{{detalle.nombre}}</td>
+                        <td>{{detalle.precio | currency:'USD'}}</td>
+                        <td>{{detalle.cantidad}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h6 class="float-right mt-5">total a pagar: {{invoice.pago | currency:'USD'}}</h6>
+        </div>
+    </div>
+</div>
