@@ -1,0 +1,87 @@
+
+<div class="card mt-5 shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+        <form [formGroup]="ticketsForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="nombre">nombre cliente</label>
+                        <input type="text" class="form-control" formControlName="nombre">
+                        <div *ngIf="form.nombre.invalid && (form.nombre.dirty || form.nombre.touched)">
+                            <small *ngIf="form.nombre.errors.required" class="text-danger">el campo nombre es requerido</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="dui">dui cliente</label>
+                        <input type="text" class="form-control" formControlName="dui" placeholder="#########-#">
+                        <div *ngIf="form.dui.invalid && (form.dui.dirty || form.dui.touched)">
+                            <small *ngIf="form.dui.errors.required" class="text-danger">el dui nombre es requerido</small>
+                            <small *ngIf="form.dui.errors.pattern" class="text-danger">el dui no tiene un formato valido</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="codigo">codigo a buscar</label>
+                        <input type="text" class="form-control" formControlName="codigo">
+                        <div *ngIf="form.codigo.invalid && (form.codigo.dirty || form.codigo.touched)">
+                            <small *ngIf="form.codigo.errors.required" class="text-danger">el codigo nombre es requerido</small>
+                            <small *ngIf="form.codigo.errors.unique" class="text-danger">el codigo ingresado no existe</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <button 
+                        type="button"
+                        class="btn btn-primary btn-outline" 
+                        style="margin-top: 30px;"
+                        (click)="onClick()"
+                        [disabled]="form.codigo.invalid"
+                    >ingresar producto</button>
+                </div>
+            </div>
+        
+            <div style="max-height:300px; overflow:auto;">
+                <table class="table text-center mt-3">
+                    <thead>
+                        <tr>
+                            <th>codigo</th>
+                            <th>nombre</th>
+                            <th>precio</th>
+                            <th>cantidad</th>
+                            <th>acciones</th>
+                        </tr>
+                    </thead>
+                    <tr *ngIf="detalles.length === 0; else elseBlock">
+                        <td colspan="5">no hay elementos registrados aun</td>
+                    </tr>
+                    <ng-template #elseBlock>
+                        <tr *ngFor="let detalle of detalles;">
+                            <td>{{detalle.codigo}}</td>
+                            <td>{{detalle.nombre}}</td>
+                            <td>{{detalle.precio | currency:'USD'}}</td>
+                            <td>{{detalle.cantidad}}</td>
+                            <td>
+                                <i class="fa fa-trash text-danger" id="trash" (click)="eliminarProducto(detalle)"></i>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </table>
+                
+            </div>
+            <div *ngIf="total !==0;" class="mt-4">
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="ticketsForm.invalid">
+                    Registrar compra
+                </button>
+                <strong class="float-right">total a pagar: {{total | currency:'USD'}}</strong>
+            </div>
+        </form>
+    </div>
+  </div>
