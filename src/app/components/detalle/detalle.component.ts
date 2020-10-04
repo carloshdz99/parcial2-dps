@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FirebaseService } from 'src/app/services/firebase.service';
+=======
+>>>>>>> 34f4984f8f97388676152fab5eaaa018bb14a86a
 
 @Component({
   selector: 'app-detalle',
@@ -8,6 +11,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class DetalleComponent implements OnInit {
 
+<<<<<<< HEAD
   tickets;
   p: number = 1;
   constructor(
@@ -29,4 +33,11 @@ export class DetalleComponent implements OnInit {
       else this.tickets = response;
     });
   }
+=======
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+>>>>>>> 34f4984f8f97388676152fab5eaaa018bb14a86a
 }

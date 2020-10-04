@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FirebaseService } from 'src/app/services/firebase.service';
+=======
+>>>>>>> 34f4984f8f97388676152fab5eaaa018bb14a86a
 
 @Component({
   selector: 'app-productos',
@@ -8,12 +11,16 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class ProductosComponent implements OnInit {
 
+<<<<<<< HEAD
   productos;
   constructor(
     private service:FirebaseService
   ) { 
     this.productos = this.service.productos;
   }
+=======
+  constructor() { }
+>>>>>>> 34f4984f8f97388676152fab5eaaa018bb14a86a
 
   ngOnInit(): void {
   }
