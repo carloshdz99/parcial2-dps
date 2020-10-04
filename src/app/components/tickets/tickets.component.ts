@@ -76,7 +76,7 @@ export class TicketsComponent implements OnInit {
           model.detalle = this.detalles;
           model.descuento = '8%';
         }
-        else if(visitas >= 2 || visitas < 5) {
+        else if(visitas >= 2 && visitas < 5) {
           this.detalles.forEach(x => {x.precio = x.precio - (x.precio * 0.05)})
           model.detalle = this.detalles;
           model.descuento = '5%';
