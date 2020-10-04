@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -98,20 +97,3 @@ export class TicketsComponent implements OnInit {
   }
 
 }
-
-=======
-
-@Component({
-  selector: 'app-ticket',
-  templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.css']
-})
-export class TicketComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
->>>>>>> 34f4984f8f97388676152fab5eaaa018bb14a86a
