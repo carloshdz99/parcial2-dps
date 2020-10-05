@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "parcial2-dps",
+    "public": "dist/parcial2DPS",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
