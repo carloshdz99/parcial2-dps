@@ -1,11 +1,17 @@
 {
   "hosting": {
-    "site": "parcial2-dps",
+    "site": "parcial2angularfire-dps",
     "public": "dist/parcial2DPS",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
