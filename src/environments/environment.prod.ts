@@ -1,13 +1,12 @@
 export const environment = {
   production: false,
-  firebaseConfig:{
-    apiKey: "AIzaSyCDmsOAIepwoOx2n0BDFHGg46iCcopJI9M",
-    authDomain: "db-dps-2.firebaseapp.com",
-    databaseURL: "https://db-dps-2.firebaseio.com",
-    projectId: "db-dps-2",
-    storageBucket: "db-dps-2.appspot.com",
-    messagingSenderId: "279082794948",
-    appId: "1:279082794948:web:53c55ba740e70590f4ae91",
-    measurementId: "G-RJPTRM51HQ"
+  firebaseConfig: {
+    apiKey: "AIzaSyAKlEbdO9PeLKKdUD7y8ll--biNXK2Ll-U",
+    authDomain: "parcial-dps1.firebaseapp.com",
+    databaseURL: "https://parcial-dps1.firebaseio.com",
+    projectId: "parcial-dps1",
+    storageBucket: "parcial-dps1.appspot.com",
+    messagingSenderId: "439873817675",
+    appId: "1:439873817675:web:679b76110847d10678d1ce"
   }
 };
